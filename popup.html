@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>Calendrier MDPI2</title>
+  </head>
+  <body>
+    <header class="cal-header">
+      <button id="prev-month" class="nav-btn" type="button" aria-label="Mois précédent">&#8249;</button>
+      <h1 id="month-label" class="month-label"></h1>
+      <button id="next-month" class="nav-btn" type="button" aria-label="Mois suivant">&#8250;</button>
+    </header>
+
+    <div id="weekdays" class="weekdays"></div>
+    <div id="grid" class="grid"></div>
+
+    <section class="panel">
+      <h2 id="panel-title" class="panel-title"></h2>
+      <ul id="day-list" class="day-list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel-title">À venir</h2>
+      <ul id="upcoming-list" class="upcoming-list"></ul>
+    </section>
+
+    <footer id="legend" class="legend"></footer>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
