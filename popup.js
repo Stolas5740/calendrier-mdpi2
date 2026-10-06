@@ -2,7 +2,7 @@ import { getEvents } from "./data.js";
 import { TYPES, resolveType } from "./types.js";
 
 const MAX_DOTS = 4;
-const MAX_UPCOMING = 3;
+const MAX_UPCOMING = 4;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const WEEKDAYS = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 const monthFormatter = new Intl.DateTimeFormat("fr-FR", { month: "long", year: "numeric" });

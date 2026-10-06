@@ -14,15 +14,17 @@ modification apparaît dans l'extension en 5 minutes maximum (cache GitHub).
 
 | Pastille | `type` | Signification |
 |---|---|---|
-| 🟣 violet | `projet` | Projet à rendre |
-| 🟢 vert | `examen` | Devoir sur table |
+| 🟡 jaune | `ecrit` | Écrit à rendre (projet, rapport, dossier) |
+| 🟣 violet | `oral` | Oral |
+| 🟢 vert | `examen` | Devoir sur table / examen |
+| 🟠 orange | `memoire` | Mémoire (Doc A, Doc B, rendu, soutenance) |
 
 ## Format d'`events.json`
 
 ```json
 {
   "date": "2026-12-04",
-  "type": "projet",
+  "type": "ecrit",
   "matiere": "Fiscalité",
   "titre": "Rendu écrit",
   "details": "Texte libre, facultatif",

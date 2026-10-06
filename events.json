@@ -1,7 +1,26 @@
 [
   {
+    "date": "2026-11-01",
+    "type": "ecrit",
+    "matiere": "Comptabilité",
+    "titre": "Rendu du projet (15 pages)"
+  },
+  {
+    "date": "2026-11-02",
+    "type": "oral",
+    "matiere": "Anglais",
+    "titre": "Oral",
+    "details": "10 min seul ou 15 min à deux"
+  },
+  {
+    "date": "2026-11-04",
+    "type": "oral",
+    "matiere": "Comptabilité",
+    "titre": "Oral du projet de 15 pages"
+  },
+  {
     "date": "2026-12-04",
-    "type": "projet",
+    "type": "ecrit",
     "matiere": "Fiscalité",
     "titre": "Rendu écrit",
     "details": "Sujets : loi Malraux · Loc'Avantages · Denormandie · investir en SCPI · loi Monuments historiques 2013 · dispositif Jeanbrun (statut du bailleur privé / plan de relance logement)"
@@ -11,5 +30,49 @@
     "type": "examen",
     "matiere": "Fiscalité",
     "titre": "Devoir sur table"
+  },
+  {
+    "date": "2026-12-15",
+    "type": "examen",
+    "matiere": "Anglais",
+    "titre": "Examen"
+  },
+  {
+    "date": "2026-12-15",
+    "type": "ecrit",
+    "matiere": "Facility management",
+    "titre": "Rendu du rapport"
+  },
+  {
+    "date": "2027-01-11",
+    "type": "examen",
+    "matiere": "Urbanisme",
+    "titre": "Examen 1"
+  },
+  {
+    "date": "2027-01-12",
+    "type": "examen",
+    "matiere": "Urbanisme",
+    "titre": "Examen 2"
+  },
+  {
+    "date": "2027-02-10",
+    "type": "memoire",
+    "titre": "Rendu Doc A"
+  },
+  {
+    "date": "2027-05-26",
+    "type": "memoire",
+    "titre": "Rendu Doc B"
+  },
+  {
+    "date": "2027-08-20",
+    "type": "memoire",
+    "titre": "Rendu du mémoire"
+  },
+  {
+    "date": "2027-09-01",
+    "type": "memoire",
+    "titre": "Soutenance"
   }
 ]
