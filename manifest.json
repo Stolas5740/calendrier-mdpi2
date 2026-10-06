@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Calendrier MDPI2",
   "version": "1.1.0",
-  "description": "Échéances du Master 2 : projets à rendre et devoirs sur table.",
+  "description": "Échéances du Master 2 : écrits à rendre, oraux, devoirs sur table et mémoire.",
   "action": {
     "default_title": "Calendrier MDPI2",
     "default_popup": "popup.html",
