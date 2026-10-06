@@ -2,7 +2,6 @@ import { getEvents } from "./data.js";
 import { TYPES, resolveType } from "./types.js";
 
 const MAX_DOTS = 4;
-const MAX_UPCOMING = 4;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const WEEKDAYS = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 const monthFormatter = new Intl.DateTimeFormat("fr-FR", { month: "long", year: "numeric" });
@@ -17,7 +16,8 @@ const els = {
   grid: document.getElementById("grid"),
   panelTitle: document.getElementById("panel-title"),
   dayList: document.getElementById("day-list"),
-  upcomingList: document.getElementById("upcoming-list"),
+  monthTitle: document.getElementById("month-title"),
+  monthList: document.getElementById("month-list"),
   legend: document.getElementById("legend"),
 };
 
@@ -55,6 +55,7 @@ function daysBetween(fromKey, toKey) {
 
 function countdown(key) {
   const days = daysBetween(todayKey, key);
+  if (days < 0) return "Passé";
   if (days === 0) return "Aujourd'hui";
   if (days === 1) return "Demain";
   return `J-${days}`;
@@ -189,37 +190,57 @@ function renderDayPanel() {
   );
 }
 
-function renderUpcoming() {
-  if (state.error) {
-    els.upcomingList.replaceChildren();
-    return;
-  }
-
-  const upcoming = state.events.filter((event) => event.date >= todayKey).slice(0, MAX_UPCOMING);
-  if (upcoming.length === 0) {
-    els.upcomingList.replaceChildren(makeMessage("Aucune échéance à venir."));
-    return;
-  }
-
-  els.upcomingList.replaceChildren(
-    ...upcoming.map((event) => {
-      const row = document.createElement("button");
-      row.type = "button";
-      row.className = "upcoming";
-      row.title = `Afficher le ${dayFormatter.format(parseKey(event.date))}`;
-      row.append(
-        makeDot(event.type),
-        makeSpan("upcoming-name", eventLabel(event)),
-        makeSpan("upcoming-date", shortFormatter.format(parseKey(event.date))),
-        makeSpan("upcoming-countdown", countdown(event.date))
-      );
-      row.addEventListener("click", () => selectDate(event.date));
-
-      const item = document.createElement("li");
-      item.append(row);
-      return item;
-    })
+/** Ligne cliquable d'une échéance : pastille, intitulé, date, compte à rebours. */
+function makeEventRow(event) {
+  const row = document.createElement("button");
+  row.type = "button";
+  row.className = "event-row";
+  if (event.date < todayKey) row.classList.add("past");
+  row.title = `Afficher le ${dayFormatter.format(parseKey(event.date))}`;
+  row.append(
+    makeDot(event.type),
+    makeSpan("event-name", eventLabel(event)),
+    makeSpan("event-date", shortFormatter.format(parseKey(event.date))),
+    makeSpan("event-countdown", countdown(event.date))
   );
+  row.addEventListener("click", () => selectDate(event.date));
+
+  const item = document.createElement("li");
+  item.append(row);
+  return item;
+}
+
+/** Échéances du mois affiché dans la grille. */
+function renderMonthList() {
+  const monthName = monthFormatter.format(new Date(state.year, state.month, 1));
+  els.monthTitle.textContent = `À faire en ${monthName}`;
+
+  if (state.error) {
+    els.monthList.replaceChildren();
+    return;
+  }
+
+  const monthStart = dateKey(state.year, state.month, 1);
+  const prefix = monthStart.slice(0, 7);
+  const inMonth = state.events.filter((event) => event.date.startsWith(prefix));
+  if (inMonth.length > 0) {
+    els.monthList.replaceChildren(...inMonth.map(makeEventRow));
+    return;
+  }
+
+  // Mois vide : on indique la prochaine échéance pour ne pas laisser le panneau muet.
+  const from = monthStart > todayKey ? monthStart : todayKey;
+  const next = state.events.find((event) => event.date >= from);
+  if (!next) {
+    els.monthList.replaceChildren(makeMessage(`Rien de prévu en ${monthName}.`));
+    return;
+  }
+  els.monthList.replaceChildren(makeMessage(`Rien de prévu en ${monthName}. Prochaine échéance :`), makeEventRow(next));
+}
+
+function renderMonth() {
+  renderGrid();
+  renderMonthList();
 }
 
 function selectDate(key) {
@@ -227,7 +248,7 @@ function selectDate(key) {
   const date = parseKey(key);
   state.year = date.getFullYear();
   state.month = date.getMonth();
-  renderGrid();
+  renderMonth();
   renderDayPanel();
 }
 
@@ -235,7 +256,7 @@ function shiftMonth(delta) {
   const date = new Date(state.year, state.month + delta, 1);
   state.year = date.getFullYear();
   state.month = date.getMonth();
-  renderGrid();
+  renderMonth();
 }
 
 els.prev.addEventListener("click", () => shiftMonth(-1));
@@ -256,9 +277,8 @@ async function init() {
     console.error(error);
     state.error = "Impossible de charger les échéances.";
   }
-  renderGrid();
+  renderMonth();
   renderDayPanel();
-  renderUpcoming();
 }
 
 init();
