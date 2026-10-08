@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-22",
+    "type": "examen",
+    "matiere": "Technique du bâtiment",
+    "titre": "Devoir sur table",
+    "details": "Avec M. Gerner"
+  },
+  {
     "date": "2026-11-01",
     "type": "ecrit",
     "matiere": "Comptabilité",
