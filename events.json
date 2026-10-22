@@ -26,6 +26,12 @@
     "titre": "Oral du projet de 15 pages"
   },
   {
+    "date": "2026-11-17",
+    "type": "ecrit",
+    "matiere": "Technique du bâtiment",
+    "titre": "Dossier à rendre"
+  },
+  {
     "date": "2026-12-04",
     "type": "ecrit",
     "matiere": "Fiscalité",
@@ -49,6 +55,12 @@
     "type": "ecrit",
     "matiere": "Facility management",
     "titre": "Rendu du rapport"
+  },
+  {
+    "date": "2026-12-17",
+    "type": "examen",
+    "matiere": "Technique du bâtiment",
+    "titre": "Devoir sur table"
   },
   {
     "date": "2027-01-11",
