@@ -32,6 +32,18 @@
     "titre": "Dossier à rendre"
   },
   {
+    "date": "2026-11-18",
+    "type": "oral",
+    "matiere": "Marketing de l'immobilier",
+    "titre": "Oral à finir"
+  },
+  {
+    "date": "2026-11-18",
+    "type": "examen",
+    "matiere": "Marketing de l'immobilier",
+    "titre": "Devoir sur table"
+  },
+  {
     "date": "2026-12-04",
     "type": "ecrit",
     "matiere": "Fiscalité",
