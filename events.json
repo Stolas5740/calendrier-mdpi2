@@ -44,6 +44,12 @@
     "titre": "Devoir sur table"
   },
   {
+    "date": "2026-11-30",
+    "type": "examen",
+    "matiere": "Expertise immobilière",
+    "titre": "Devoir de 2h"
+  },
+  {
     "date": "2026-12-04",
     "type": "ecrit",
     "matiere": "Fiscalité",
@@ -67,6 +73,12 @@
     "type": "ecrit",
     "matiere": "Facility management",
     "titre": "Rendu du rapport"
+  },
+  {
+    "date": "2026-12-15",
+    "type": "examen",
+    "matiere": "Évaluation immobilière",
+    "titre": "Devoir sur table en groupe"
   },
   {
     "date": "2026-12-17",
